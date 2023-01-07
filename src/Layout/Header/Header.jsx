@@ -3,8 +3,8 @@ import { Box } from "@mui/system";
 import React from "react";
 import YoutubeSearchedForIcon from '@mui/icons-material/YoutubeSearchedFor';
 import TabPanel from "../../Components/TabPanel";
-import ConversionHistory from "../Pages/ConversionHistory/ConversionHistory";
-import CurrencyConverterPage from "../Pages/CurrencyConverter/CurrencyConverterPage";
+import CurrencyConverterPage from '../../Pages/CurrencyConverter/CurrencyConverterPage'
+import ConversionHistory from '../../Pages/ConversionHistory/ConversionHistory'
 
 const Header = () =>{
     const [value, setValue] = React.useState('1');

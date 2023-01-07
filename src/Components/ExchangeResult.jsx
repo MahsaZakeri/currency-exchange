@@ -48,14 +48,17 @@ const ExchangeResult = ({ currencyData, result , defaultDate}) => {
   
 };
 
-  // useEffect(()=>{
-  // },[])
+  useEffect(()=>{
+    rateInDays(date).then(res => {
+      setRateHistory(res.data.rates)
+    })
+  },[])
   return (
     <>
       <Divider />
-      <Box>
+      <Box  sx={{my : 3}}>
         <Typography variant='h3'>
-          {currencyData.amount} {currencyData.from} = <span> {result.result}{' '}
+          {currencyData.amount} {currencyData.from} = <span style={{color : "#94C720"}}> {result.result}{' '}
           {currencyData.to}</span>
         </Typography>
         <Typography>
@@ -63,7 +66,7 @@ const ExchangeResult = ({ currencyData, result , defaultDate}) => {
         </Typography>
       </Box>
       <Divider />
-      <Grid container direction="column" alignItems="flex-start">
+      <Grid container direction="column" alignItems="flex-start" sx={{my : 3}}>
         <Typography>Exchange History</Typography>
         <TextField
           sx={{ width: '200px', my: 3 }}
