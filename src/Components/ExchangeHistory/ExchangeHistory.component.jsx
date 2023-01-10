@@ -1,7 +1,7 @@
 import { Grid } from '@mui/material';
 import React from 'react';
 
-const ConversionHistory = () => {
+const ExchangeHistory = () => {
   return (
     <Grid>
       <p>I am ConversionHistory</p>
@@ -9,4 +9,4 @@ const ConversionHistory = () => {
   );
 };
 
-export default ConversionHistory;
+export default ExchangeHistory;

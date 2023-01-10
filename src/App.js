@@ -1,6 +1,5 @@
 
-import './App.css';
-import Header from './Layout/Header/Header';
+import Header from './Components/Header/Header.component';
 import {ThemeProvider } from '@mui/material/styles';
 import { theme } from './Assets/Theme/Theme'
 function App() {
