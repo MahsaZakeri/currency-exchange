@@ -1,24 +1,25 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 import {
   Autocomplete,
   Button,
   Grid,
   IconButton,
   TextField,
-} from "@mui/material";
-import { Box } from "@mui/system";
-import CompareArrowsIcon from "@mui/icons-material/CompareArrows";
-import { convertCurrency, rateInDays } from "../../Api/api.services";
-import { currenciesData, sevenDaysAgo } from "../../Assets/Data/mockData";
-import ExchangeResult from "../ExchangeResult/ExchangeResult.component";
-import moment from "moment";
+} from '@mui/material';
+import { Box } from '@mui/system';
+import CompareArrowsIcon from '@mui/icons-material/CompareArrows';
+import { convertCurrency, rateInDays } from '../../Api/api.services';
+import { currenciesData, sevenDaysAgo } from '../../Assets/Data/mockData';
+import ExchangeResult from '../ExchangeResult/ExchangeResult.component';
+import moment from 'moment';
 
 const CurrencyConverter = () => {
   const [conversionHistory, setConversionHistory] = useState([]);
+  // const [selectedHistory , setSelectedHistory] = useState()
   const [currencyData, setCurrencyData] = useState({
-    amount: "",
-    from: "",
-    to: "",
+    amount: '',
+    from: '',
+    to: '',
   });
 
   const [result, setResult] = useState({
@@ -26,20 +27,13 @@ const CurrencyConverter = () => {
     result: 0,
   });
 
-  // const defaultDate = {
-  //   startDate: moment(sevenDaysAgo).format("YYYY-MM-DD"),
-  //   endDate: moment(new Date()).format("YYYY-MM-DD"),
-  //   base: currencyData?.from,
-  // };
-
-  const convertHandler = function () {
+  const convertHandler = () => {
     convertCurrency(currencyData).then(res => {
       setResult({
         rate: res.data.info.rate,
         result: res.data.result,
       });
     });
-    // rateInDays(defaultDate);
   };
   const changeCurrency = function () {
     const fromCurr = currencyData.from;
@@ -48,7 +42,7 @@ const CurrencyConverter = () => {
 
   const newConversionHandler = function () {
     setResult({ rate: 0, result: 0 });
-    setCurrencyData({ amount: "", from: "", to: "" });
+    setCurrencyData({ amount: '', from: '', to: '' });
   };
 
   useEffect(() => {
@@ -57,7 +51,7 @@ const CurrencyConverter = () => {
         amount: currencyData.amount,
         from: currencyData.from,
         to: currencyData.to,
-        date: moment(new Date()).format("YYYY-MM-DD HH:mm:ss"),
+        date: moment(new Date()).format('YYYY-MM-DD HH:mm:ss'),
       };
       setConversionHistory(curr => [...curr, conversionData]);
     }
@@ -65,14 +59,22 @@ const CurrencyConverter = () => {
 
   useEffect(() => {
     if (conversionHistory.length > 0) {
-      localStorage.setItem("History", JSON.stringify(conversionHistory));
+      localStorage.setItem('History', JSON.stringify(conversionHistory));
     }
   }, [conversionHistory]);
 
   useEffect(() => {
-    const historySaved = JSON.parse(localStorage.getItem("History"));
+    const historySaved = JSON.parse(localStorage.getItem('History'));
+    const viewSelectedHistory = JSON.parse(
+      localStorage.getItem('selectedHistory')
+    );
     if (historySaved) {
       setConversionHistory(historySaved);
+    }
+    if (viewSelectedHistory) {
+      setCurrencyData(viewSelectedHistory);
+      convertHandler();
+      localStorage.removeItem('selectedHistory');
     }
   }, []);
   return (
@@ -80,12 +82,13 @@ const CurrencyConverter = () => {
       <Box
         component="form"
         sx={{
-          "& > :not(style)": { m: 1, width: "25ch" },
-          display: "flex",
-          alignItems: "end",
+          '& > :not(style)': { m: 1, width: '25ch' },
+          display: 'flex',
+          alignItems: 'end',
         }}
       >
         <TextField
+          disabled={result.result !== 0}
           id="Amount"
           label="Amount"
           variant="standard"
@@ -96,7 +99,9 @@ const CurrencyConverter = () => {
         />
 
         <Autocomplete
+          disabled={result.result !== 0}
           options={currenciesData}
+          value={currencyData.from}
           inputValue={currencyData.from}
           onInputChange={(event, newInputValue) => {
             setCurrencyData({ ...currencyData, from: newInputValue });
@@ -111,27 +116,29 @@ const CurrencyConverter = () => {
           color="primary"
           disabled={result.result !== 0}
           sx={{
-            maxWidth: "40px",
-            border: "solid 1px",
-            borderRadius: "0",
+            maxWidth: '40px',
+            border: 'solid 1px',
+            borderRadius: '0',
             mx: 0.5,
-            bgcolor: "white",
+            bgcolor: 'white',
           }}
           onClick={changeCurrency}
         >
           <CompareArrowsIcon />
         </IconButton>
         <Autocomplete
+          disabled={result.result !== 0}
+          value={currencyData.to}
           options={currenciesData}
           inputValue={currencyData.to}
           onInputChange={(e, newInputValue) => {
-            setCurrencyData({ ...currencyData, to: newInputValue })
+            setCurrencyData({ ...currencyData, to: newInputValue });
           }}
           renderInput={params => (
             <TextField {...params} label="To" variant="standard" />
           )}
-          />
-      
+        />
+
         <Button
           variant="contained"
           onClick={result.result == 0 ? convertHandler : newConversionHandler}
@@ -141,12 +148,8 @@ const CurrencyConverter = () => {
       </Box>
       <Box sx={{ my: 2 }}>
         {result.result !== 0 && (
-          <ExchangeResult
-            currencyData={currencyData}
-            result={result}
-            />
-            )}
-            {/* defaultDate={defaultDate} */}
+          <ExchangeResult currencyData={currencyData} result={result} />
+        )}
       </Box>
     </Grid>
   );

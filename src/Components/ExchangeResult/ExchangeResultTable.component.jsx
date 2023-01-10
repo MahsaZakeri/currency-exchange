@@ -44,7 +44,7 @@ const ExchangeResultTable = ({ rateHistory, base }) => {
     calculateStatics();
   }, [rateHistory]);
   return (
-    <Grid container spacing={3}>
+    <Grid container spacing={1} sx={{ mx: 0.7 }}>
       <Grid item xs={6}>
         <TableContainer component={Paper}>
           <Table aria-label="simple table">
