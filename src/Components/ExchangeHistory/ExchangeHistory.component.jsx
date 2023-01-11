@@ -21,7 +21,6 @@ const ExchangeHistory = ({ setValue }) => {
   const [savedHistory, setSaveHistory] = useState([]);
   const [isHovering, setIsHovering] = useState(-1);
   const handleMouseOver = i => {
-    console.log(i);
     setIsHovering(i);
   };
 
@@ -88,6 +87,7 @@ const ExchangeHistory = ({ setValue }) => {
                         <IconButton
                           size="small"
                           edge="start"
+                          color="warn"
                           onClick={() => deleteHandler(history.date)}
                         >
                           <DeleteForeverIcon sx={{ mx: 0.5 }} />

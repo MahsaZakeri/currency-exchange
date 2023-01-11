@@ -42,7 +42,7 @@ const CurrencyConverter = () => {
 
   const newConversionHandler = function () {
     setResult({ rate: 0, result: 0 });
-    setCurrencyData({ amount: '', from: '', to: '' });
+    setCurrencyData({ amount: '', from: ' ', to: ' ' });
   };
 
   useEffect(() => {
@@ -99,6 +99,7 @@ const CurrencyConverter = () => {
         />
 
         <Autocomplete
+          isOptionEqualToValue={(option, value) => value.label === option.label}
           disabled={result.result !== 0}
           options={currenciesData}
           value={currencyData.from}
@@ -127,6 +128,7 @@ const CurrencyConverter = () => {
           <CompareArrowsIcon />
         </IconButton>
         <Autocomplete
+          isOptionEqualToValue={(option, value) => value.label === option.label}
           disabled={result.result !== 0}
           value={currencyData.to}
           options={currenciesData}

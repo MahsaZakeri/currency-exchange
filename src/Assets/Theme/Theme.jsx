@@ -1,28 +1,22 @@
-import { Typography } from "@mui/material";
-import { createTheme } from "@mui/material/styles";
+import { Typography } from '@mui/material';
+import { createTheme } from '@mui/material/styles';
 export const theme = createTheme({
   palette: {
     primary: {
-      main: "#009688",
+      main: '#009688',
     },
     secondary: {
-      main: "#94C720",
+      main: '#94C720',
     },
     warn: {
-      main: "#C70D38",
-    },
-    defaultText: {
-      main: "#404040",
-    },
-    tableHeaderText: {
-      main: "#8D8D8D",
+      main: '#C70D38',
     },
     white: {
-      main: "#fffffff",
+      main: '#fffffff',
     },
     text: {
-      primary: "#404040",
-      secondary: "#8D8D8D",
+      primary: '#404040',
+      secondary: '#8D8D8D',
     },
   },
 
@@ -33,9 +27,9 @@ export const theme = createTheme({
           MuiTab: {
             styleOverrides: {
               root: {
-                fontFamily: "Roboto",
-                fontSize: " 1.5rem",
-                fontWeight: "900",
+                fontFamily: 'Roboto',
+                fontSize: ' 1.5rem',
+                fontWeight: '900',
               },
             },
           },
@@ -47,8 +41,8 @@ export const theme = createTheme({
     h3: {
       fontWeight: 700,
     },
-    h5:{
-      fontWeight: 700
-    }
+    h5: {
+      fontWeight: 700,
+    },
   },
 });

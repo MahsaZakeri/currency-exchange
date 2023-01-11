@@ -7,7 +7,9 @@ const http = axios.create({
 
 export const convertCurrency = async data => {
   const response = await http.get(
-    `convert?from=${data.from}&to=${data.to}&amount=${data.amount}`
+    `convert?from=${data.from}&to=${data.to}&amount=${
+      data.amount ? data.amount : 1
+    } `
   );
   if (response.status === 200) return response;
 };
