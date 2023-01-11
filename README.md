@@ -2,7 +2,7 @@
 
 Simple currency conversion app, which uses exchanged rates API from [exchangerate.host](https://exchangerate.host). The app is made with React in a Functional Programming approach.
 
-![currency-exchange](https://drive.google.com/file/d/1iufMVzMMYMo8rCVTLF0_NVmbCS-GrEf4/view?usp=share_link)
+![currency-exchange](/src/Assets//Images/currency-exchange.png)
 
 ## Running the project
 
