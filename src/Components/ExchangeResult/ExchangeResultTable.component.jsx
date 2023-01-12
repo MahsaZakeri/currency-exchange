@@ -51,7 +51,7 @@ const ExchangeResultTable = ({ rateHistory, base }) => {
             <TableHead>
               <TableRow>
                 <TableCell align="left">Date</TableCell>
-                <TableCell align="left">Exchange Rate</TableCell>
+                <TableCell align="left">Exchange rate</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>{rows}</TableBody>
@@ -63,7 +63,7 @@ const ExchangeResultTable = ({ rateHistory, base }) => {
           <Table aria-label="simple table">
             <TableHead>
               <TableRow>
-                <TableCell align="left">Static</TableCell>
+                <TableCell align="left">Statistics</TableCell>
                 <TableCell align="left"></TableCell>
               </TableRow>
             </TableHead>

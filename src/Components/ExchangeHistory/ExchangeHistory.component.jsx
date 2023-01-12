@@ -11,15 +11,15 @@ import {
   Grid,
   IconButton,
   Typography,
-  Card,
 } from '@mui/material';
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
-import { BorderClear } from '@mui/icons-material';
 import { Box } from '@mui/system';
+
 const ExchangeHistory = ({ setValue }) => {
   const [savedHistory, setSaveHistory] = useState([]);
   const [isHovering, setIsHovering] = useState(-1);
+  //handling view actions based on hover
   const handleMouseOver = i => {
     setIsHovering(i);
   };

@@ -34,28 +34,29 @@ const Header = () => {
           }}
         >
           <IconButton size="large" edge="start" color="inherit">
-            <YoutubeSearchedForIcon />
+            <YoutubeSearchedForIcon color="primary" />
             <Typography>currency Exchange</Typography>
           </IconButton>
-          <Tabs
-            sx={{ ml: '5', mt: 1 }}
-            value={value}
-            onChange={(e, newValue) => setValue(newValue)}
-            textColor="inherit"
-          >
-            <Tab
-              label="Currency Converter"
-              value="1"
-              id="1"
-              sx={{ fontSize: '24px' }}
-            />
-            <Tab
-              label="Conversion History"
-              value="2"
-              id="2"
-              sx={{ fontSize: '24px' }}
-            />
-          </Tabs>
+          <Box>
+            <Tabs
+              sx={{ ml: '5', mt: 1 }}
+              value={value}
+              onChange={(e, newValue) => setValue(newValue)}
+              textColor="inherit"
+            >
+              <Tab
+                label="Currency Converter"
+                value="1"
+                sx={{ fontSize: '24px' }}
+              />
+              <Tab
+                label="View Conversion History"
+                value="2"
+                sx={{ fontSize: '24px', padding: '14px 0px 14px 16px' }}
+              />
+            </Tabs>
+          </Box>
+
           <TabPanel value={value} index="1">
             {<CurrencyConverter />}
           </TabPanel>
@@ -68,7 +69,7 @@ const Header = () => {
             color="primary"
             onClick={logoutHandler}
           >
-            <Typography>Logout</Typography>
+            <Typography>LOGOUT</Typography>
           </IconButton>
         </Toolbar>
       </AppBar>

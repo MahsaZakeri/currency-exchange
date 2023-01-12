@@ -8,14 +8,13 @@ import {
 } from '@mui/material';
 import { Box } from '@mui/system';
 import CompareArrowsIcon from '@mui/icons-material/CompareArrows';
-import { convertCurrency, rateInDays } from '../../Api/api.services';
-import { currenciesData, sevenDaysAgo } from '../../Assets/Data/mockData';
+import { convertCurrency } from '../../Api/api.services';
+import { currenciesData } from '../../Assets/Data/data';
 import ExchangeResult from '../ExchangeResult/ExchangeResult.component';
 import moment from 'moment';
 
 const CurrencyConverter = () => {
   const [conversionHistory, setConversionHistory] = useState([]);
-  // const [selectedHistory , setSelectedHistory] = useState()
   const [currencyData, setCurrencyData] = useState({
     amount: '',
     from: '',
